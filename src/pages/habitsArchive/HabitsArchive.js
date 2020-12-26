@@ -6,8 +6,7 @@ import Styled from 'styled-components'
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-export default function HabitsArchive({habits, setHabits}) {
-  console.log(habits);
+export default function HabitsArchive({habits, setHabits, db}) {
   return (
     <div>
       Page listing all of the habits
@@ -27,7 +26,7 @@ export default function HabitsArchive({habits, setHabits}) {
           )
         })}
       </List>
-      <AddHabit setHabits={setHabits} />
+      <AddHabit setHabits={setHabits} db={db}/>
     </div>
   )
 }
