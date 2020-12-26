@@ -4,7 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
 
-export default function AddHabit({setHabits}) {
+export default function AddHabit({setHabits, db}) {
   const [habitName, setHabitName ] = useState('');
 
   const handleChange = (event) => {
@@ -17,6 +17,9 @@ export default function AddHabit({setHabits}) {
       <TextField id="standard-name" label="Name" value={habitName} onChange={handleChange} />
       <IconButton variant="contained" color="primary" onClick={(e)=>{
         setHabits(prev => [...prev, {name:habitName}])
+        db.post({
+          name: habitName
+        })
       }}>
         <AddIcon/>
       </IconButton>

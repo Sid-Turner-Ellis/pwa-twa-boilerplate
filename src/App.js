@@ -8,6 +8,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Styled from 'styled-components'
 import{ GlobalProvider} from './context/GlobalProvider'
+import useDB from './database/useDB'
 
 
 
@@ -16,10 +17,10 @@ theme = responsiveFontSizes(theme);
 
 
 export default function App() {
+  const db = useDB;
   const [habits, setHabits] = useState([])
 
  
-
 
 
 
@@ -32,7 +33,7 @@ export default function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={()=> <Dashboard habits={habits} setHabits={setHabits} />}/>
-            <Route path="/habits" component={()=> <HabitsArchive habits={habits} setHabits={setHabits} />}/>
+            <Route path="/habits" component={()=> <HabitsArchive db={db} habits={habits} setHabits={setHabits} />}/>
           </Switch>
           <Bar/>
         </Router>
